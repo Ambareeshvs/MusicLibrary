@@ -1,0 +1,18 @@
+.jumbo{
+    background: red;
+    color: floralwhite;
+    padding: 70px 30px 70px 30px;
+    margin: 0px auto;
+}
+.body {
+  background: linear-gradient(to bottom, #000066 0%, #6666ff 100%);
+}
+
+.car {
+  margin-left: 425px;
+  margin-top: 250px;
+}
+.card {
+  background: linear-gradient(to bottom, #000066 0%, #000099 100%);
+  color: floralwhite;
+}

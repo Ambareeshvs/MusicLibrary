@@ -1,0 +1,22 @@
+.jumbotron {
+  background: linear-gradient(to bottom, #000066 0%, #000099 100%);
+  color: floralwhite;
+  padding: 70px 30px 70px 30px;
+  margin: 0px auto;
+}
+.body {
+  background: linear-gradient(to bottom, #000066 0%, #6666ff 100%);
+}
+.group {
+  margin-right: 0px;
+}
+.row-content {
+  margin: 0px auto;
+  padding: 50px 0px 50px 0px;
+  border-bottom: 1px ridge;
+  min-height: 400px;
+}
+.card {
+  background: linear-gradient(to bottom, #000066 0%, #000099 100%);
+  color: floralwhite;
+}
