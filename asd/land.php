@@ -1,3 +1,8 @@
+<?php
+$conn = mysqli_connect('localhost','root','') OR die("Cannot Connect...Sry..!!");
+mysqli_select_db($conn,'music');
+?>
+
 <html>
 <head>
     <meta charset="utf-8" />
@@ -19,12 +24,39 @@
     <nav class="navbar navbar-dark bg-dark">
 
             <a class="btn btn-outline-primary my-2 my-sm-0" type="submit" href="./index.php">Logout</a>
-            
-            <form class="form-inline my-2 my-lg-0">
-      <input style="" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+
+            <form class="form-inline my-2 my-lg-0" method="post">
+      <input style="" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="search_value">
+      <button class="btn btn-outline-primary my-2 my-sm-0" type="submit" name="search_btn">Search</button>
     </form>
   </nav>
+
+    <?php
+    $h = 1;
+    if (isset($_POST['search_btn'])) {
+      $name_upper = $_POST['search_value'];
+      $sql1 = "SELECT track_name FROM track";
+      $query1 = mysqli_query($conn,$sql1);
+      //$row_count = mysqli_num_rows($query1);
+      while(@$record = mysqli_fetch_array($query1))
+      {
+        for ($i=0; $i < 3 ; $i++) {
+          if (strcasecmp(@$record[$i],$name_upper) == 0) {
+            //echo '<script>alert("Found")</script>';
+            $h = 0;
+           }
+        }
+      }
+      if ($h == 1) {
+        echo '<script>alert("Not Found")</script>';
+      }
+      else {
+        echo '<script>alert("Found")</script>';
+      }
+      }
+     ?>
+
+
       <div class="jumbotron">
         <h1 class="display-4"><b>Music Library</b></h1>
         <br>
@@ -69,11 +101,6 @@
 
                  </div>
 </div>
-
-
-
-
-
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS. -->
   <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>

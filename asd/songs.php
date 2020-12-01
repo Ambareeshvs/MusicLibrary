@@ -51,17 +51,16 @@ mysqli_select_db($conn,'music');
 </div>
 <div class="card-body info">
 <h4>
-<?php echo $record['track_name']; ?>
+
+<?php
+echo $record['track_name']; ?>
 </h4>
 
-<div class="text-right"> 
+<div class="text-right">
 <button href="#" class="btn btn-outline-primary my-2 my-sm-0 mb-9 " id="button">Play</button>
-<button href="#" class="btn btn-outline-info my-2 my-sm-0 mb-9 " id="button">Delete</button>
-
+<button href="delete.php?name=" class="btn btn-outline-info my-2 my-sm-0 mb-9 " id="button" name="dlt_btn">Delete</button>
 </div>
-
-
-         </div>
+  </div>
  </div>
 </td>
 
