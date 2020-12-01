@@ -39,37 +39,37 @@ mysqli_select_db($conn,'music');
             <div class="form-group row">
               <label for="trackname" class="col-sm-6 col-form-label">Track Name :</label>
               <div class="col-sm-6">
-                <input type="text" class="form-control-plaintext" id="trackname" placeholder="Trackname" name="trackname">
+                <input style="color: floralwhite;" type="text" class="form-control-plaintext" id="trackname" placeholder="Trackname" name="trackname">
               </div>
             </div>
             <div class="form-group row">
                 <label for="trackid" class="col-sm-6 col-form-label">Track id (TR0**) :</label>
                 <div class="col-sm-6">
-                  <input type="text" class="form-control-plaintext" id="trackid" placeholder="Track Id" name="track_id">
+                  <input style="color: floralwhite;" type="text" class="form-control-plaintext" id="trackid" placeholder="Track Id" name="track_id">
                 </div>
               </div>
             <div class="form-group row">
                 <label for="tracktype" class="col-sm-6 col-form-label">Track Type :</label>
                 <div class="col-sm-6">
-                  <input type="text" class="form-control-plaintext" id="tracktype" placeholder="Track Type" name="tracktype">
+                  <input style="color: floralwhite;" type="text" class="form-control-plaintext" id="tracktype" placeholder="Track Type" name="tracktype">
                 </div>
               </div>
               <div class="form-group row">
                 <label for="trackdesc" class="col-sm-6 col-form-label">Track Description :</label>
                 <div class="col-sm-6">
-                  <input type="text" class="form-control-plaintext" id="trackdesc" placeholder="Track Description" name="trackdesc">
+                  <input style="color: floralwhite;" type="text" class="form-control-plaintext" id="trackdesc" placeholder="Track Description" name="trackdesc">
                 </div>
               </div>
               <div class="form-group row">
                 <label for="singer" class="col-sm-6 col-form-label">Singer :</label>
                 <div class="col-sm-6">
-                  <input type="text" class="form-control-plaintext" id="singer" placeholder="Singer name" name="singer_name">
+                  <input style="color: floralwhite;" type="text" class="form-control-plaintext" id="singer" placeholder="Singer name" name="singer_name">
                 </div>
               </div>
               <div class="form-group row">
                 <label for="musictype" class="col-sm-6 col-form-label">Music Type:</label>
                 <div class="col-sm-6">
-                  <input type="text" class="form-control-plaintext" id="musictype" placeholder="Music type" name="music_type">
+                  <input style="color: floralwhite;" type="text" class="form-control-plaintext" id="musictype" placeholder="Music type" name="music_type">
                 </div>
               </div>
               <div class="form-group row">
@@ -82,6 +82,7 @@ mysqli_select_db($conn,'music');
 
           <?php
           if (isset($_POST['add_details_btn'])) {
+            $k = 1;
             $track_id = $_POST['track_id'];
             $track_name = $_POST['trackname'];
             $track_type = $_POST['tracktype'];
@@ -90,22 +91,25 @@ mysqli_select_db($conn,'music');
             $music_type = $_POST['music_type'];
             $sql = "SELECT track_id FROM track";
             $query_run = mysqli_query($conn,$sql);
-            while($row = mysqli_fetch_array($query_run)){
-         if ($row['track_id'] == $_POST['track_id']) {
-            echo '<script>alert("Track Id already exists..!!")</script>';
-            }
-            else {
-
+            $row_count = mysqli_num_rows($query_run);
+            while(@$row = mysqli_fetch_array($query_run)){
+              for ($i=0; $i < $row_count ; $i++) {
+                if (@$row[$i] == $_POST['track_id']) {
+                  $k = 0;
+                  }
+                }
+              }
+              if($k == 1){
               $query = "insert into track values('$track_id','$track_name','$track_type','$track_desc')";
               $result = mysqli_query($conn,$query);
-
               $query1 = "insert into singer values('$singer_name')";
               $result1 = mysqli_query($conn,$query1);
-
               $query2 = "insert into music_cat values('$music_type')";
               $result2 = mysqli_query($conn,$query2);
-}
-         }
+            }
+            else {
+              echo '<script>alert("Track Id already exists..!!")</script>';
+            }
           }
            ?>
 

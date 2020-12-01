@@ -9,3 +9,6 @@
 .body {
   background: linear-gradient(to bottom, #000066 0%, #6666ff 100%);
 }
+input {
+  color: floralwhite;
+}

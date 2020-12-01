@@ -43,7 +43,7 @@ mysqli_select_db($conn,'music');
   <tr>
 <td>
   <br>
-  <div class="card " >
+  <div class="card" style="margin-left:5px;" >
 
 <div class="avatar">
 <img class="rounded float-left" alt="" src="./image/download.jpg">
@@ -56,7 +56,11 @@ mysqli_select_db($conn,'music');
 
 <div class="text-right"> 
 <button href="#" class="btn btn-outline-primary my-2 my-sm-0 mb-9 " id="button">Play</button>
+<button href="#" class="btn btn-outline-info my-2 my-sm-0 mb-9 " id="button">Delete</button>
+
 </div>
+
+
          </div>
  </div>
 </td>
