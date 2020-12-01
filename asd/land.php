@@ -19,7 +19,11 @@
     <nav class="navbar navbar-dark bg-dark">
 
             <a class="btn btn-outline-primary my-2 my-sm-0" type="submit" href="./index.php">Logout</a>
-            <a class="btn btn-outline-primary my-2 my-sm-0" type="submit" href="./songs.php" name=>All songs</a>
+            
+            <form class="form-inline my-2 my-lg-0">
+      <input style="" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+    </form>
   </nav>
       <div class="jumbotron">
         <h1 class="display-4"><b>Music Library</b></h1>
@@ -27,7 +31,9 @@
 
             <a href="./add.php"type="button" class="btn btn-outline-success my-2 my-sm-0">Add <b>+</b></a>
         <a href="./playlist.php"type="button"class="btn btn-outline-success my-2 my-sm-0">Create Playlist</a>
-
+        <div class="text-right">
+        <a class="btn btn-outline-primary my-2 my-sm-0" type="submit" href="./songs.php" name=>All songs</a>
+ </div>
   </div>
 
      <div class="container">
