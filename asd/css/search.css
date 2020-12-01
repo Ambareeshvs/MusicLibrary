@@ -1,0 +1,11 @@
+.body {
+  background: linear-gradient(to bottom, #000066 0%, #6666ff 100%);
+}
+.car {
+  margin-left: 470px;
+  margin-top: 80px;
+}
+.card {
+  background: linear-gradient(to bottom, #000066 0%, #000099 100%);
+  color: floralwhite;
+}

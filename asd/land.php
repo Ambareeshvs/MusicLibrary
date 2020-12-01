@@ -31,30 +31,7 @@ mysqli_select_db($conn,'music');
     </form>
   </nav>
 
-    <?php
-    $h = 1;
-    if (isset($_POST['search_btn'])) {
-      $name_upper = $_POST['search_value'];
-      $sql1 = "SELECT track_name FROM track";
-      $query1 = mysqli_query($conn,$sql1);
-      //$row_count = mysqli_num_rows($query1);
-      while(@$record = mysqli_fetch_array($query1))
-      {
-        for ($i=0; $i < 3 ; $i++) {
-          if (strcasecmp(@$record[$i],$name_upper) == 0) {
-            //echo '<script>alert("Found")</script>';
-            $h = 0;
-           }
-        }
-      }
-      if ($h == 1) {
-        echo '<script>alert("Not Found")</script>';
-      }
-      else {
-        echo '<script>alert("Found")</script>';
-      }
-      }
-     ?>
+    
 
 
       <div class="jumbotron">
@@ -64,7 +41,7 @@ mysqli_select_db($conn,'music');
             <a href="./add.php"type="button" class="btn btn-outline-success my-2 my-sm-0">Add <b>+</b></a>
         <a href="./playlist.php"type="button"class="btn btn-outline-success my-2 my-sm-0">Create Playlist</a>
         <div class="text-right">
-        <a class="btn btn-outline-primary my-2 my-sm-0" type="submit" href="./songs.php" name=>All songs</a>
+        <a class="btn btn-outline-info my-2 my-sm-0" type="submit" href="./songs.php" name=>All songs</a>
  </div>
   </div>
 
