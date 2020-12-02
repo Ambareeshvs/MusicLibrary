@@ -1,10 +1,6 @@
 <?php
-$conn = mysqli_connect('localhost','root','') OR die("Cannot Connect...Sry..!!");
-mysqli_select_db($conn,'music');
-
-//$user_name = " ";
-//$password = " ";
-?>
+  include('dbconfig/config.php');
+ ?>
 
 <html>
 <head>
@@ -84,6 +80,11 @@ mysqli_select_db($conn,'music');
             $track_desc = $_POST['trackdesc'];
             $singer_name = $_POST['singer_name'];
             $music_type = $_POST['music_type'];
+
+            if($track_id=="" || $track_name=="" || $track_type=="" || $track_desc=="" || $singer_name=="" || $music_type==""){
+              echo '<script>alert("Enter all the fields..!!")</script>';
+            }
+            else{
            
             
         
@@ -95,6 +96,7 @@ mysqli_select_db($conn,'music');
               $query2 = "INSERT INTO `music_cat`(`music_type`) values('$music_type')";
               $result2 = mysqli_query($conn,$query2);
            
+          }
           }
            ?>
 
