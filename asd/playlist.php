@@ -62,11 +62,17 @@
                         <?php
                         if (isset($_POST['playlist_btn'])) {
                           $new_playlist = $_POST['playlist_name'];
+<<<<<<< HEAD
                           if ($new_playlist == "") {
                             echo '<script>alert("Enter the playlist name..!!")</script>';
                           }
                           else{
                           $query = "insert into playlist ('playlist_name') values('$new_playlist')";
+=======
+
+                          $query = "INSERT INTO `playlist`(`playlist_name`) VALUES ('$new_playlist')";
+                          
+>>>>>>> upstream/master
                           $result = mysqli_query($conn,$query);
                         }
                       }
