@@ -1,10 +1,6 @@
 <?php
-$conn = mysqli_connect('localhost','root','') OR die("Cannot Connect...Sry..!!");
-mysqli_select_db($conn,'music');
-
-//$user_name = " ";
-//$password = " ";
-?>
+  include('dbconfig/config.php');
+ ?>
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -32,8 +28,8 @@ mysqli_select_db($conn,'music');
             <a class="btn btn-outline-primary my-2 my-sm-0" type="submit" href="./land.php"> Back</a>
             <button href="#" class="btn btn-outline-danger my-2 my-sm-0 mb-9 " id="button" data-toggle="modal" data-target="#songModal">Delete</button>
       </nav>
-    
-      
+
+
 <div class="modal fade modal-white" id="songModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -51,7 +47,7 @@ mysqli_select_db($conn,'music');
       <input type="text" class="form-control-plaintext" id="sname" placeholder="Enter a song name">
     </div>
   </div>
-  
+
 </form>
       </div>
       <div class="modal-footer">
@@ -81,17 +77,19 @@ mysqli_select_db($conn,'music');
 </div>
 <div class="card-body info">
 <h4>
-<?php echo $record['track_name']; ?>
-</h4>
 
-<div class="text-right"> 
+<?php
+echo $record['track_name']; ?>
+</h4>
+<form class="" action="" method="post">
+  <div class="text-right">
 <button href="#" class="btn btn-outline-primary my-2 my-sm-0 mb-9 " id="button">Play</button>
+<button href="" class="btn btn-outline-info my-2 my-sm-0 mb-9 " id="button" name="dlt_btn">Delete</button>
+</form>
 
 
 </div>
-
-
-         </div>
+  </div>
  </div>
 </td>
 
@@ -100,13 +98,6 @@ mysqli_select_db($conn,'music');
 
 
 <?php } ?>
-
-
-
-
-
-
-
 
     <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
     <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
