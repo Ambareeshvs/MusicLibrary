@@ -38,7 +38,7 @@
                 <input style="color: floralwhite;" type="text" class="form-control-plaintext" id="trackname" placeholder="Trackname" name="trackname">
               </div>
             </div>
-            
+
             <div class="form-group row">
                 <label for="tracktype" class="col-sm-6 col-form-label">Track Type :</label>
                 <div class="col-sm-6">
@@ -73,14 +73,14 @@
 
           <?php
           if (isset($_POST['add_details_btn'])) {
-           
-           
+
+
             $track_name = $_POST['trackname'];
             $track_type = $_POST['tracktype'];
             $track_desc = $_POST['trackdesc'];
             $singer_name = $_POST['singer_name'];
             $music_type = $_POST['music_type'];
-<<<<<<< HEAD
+
             if($track_id=="" || $track_name=="" || $track_type=="" || $track_desc=="" || $singer_name=="" || $music_type==""){
               echo '<script>alert("Enter all the fields..!!")</script>';
             }
@@ -97,19 +97,17 @@
               }
               if($k == 1){
               $query = "insert into track values('$track_id','$track_name','$track_type','$track_desc')";
-=======
-           
-            
-        
+
+
+
               $query = "INSERT INTO `track`(`track_name`, `track_type`, `track_desc`) VALUES ('$track_name','$track_type','$track_desc')";
-              
->>>>>>> upstream/master
+
               $result = mysqli_query($conn,$query);
               $query1 = "INSERT INTO `singer`(`singer_name`) VALUES ('$singer_name')";
               $result1 = mysqli_query($conn,$query1);
               $query2 = "INSERT INTO `music_cat`(`music_type`) values('$music_type')";
               $result2 = mysqli_query($conn,$query2);
-           
+
           }
           }
            ?>
