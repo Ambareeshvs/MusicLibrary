@@ -22,9 +22,9 @@
 
 </head>
 <body class="body">
-    <nav class="navbar navbar-dark bg-dark">
+          <nav class="navbar navbar-dark bg-dark">
 
-        <a class="btn btn-outline-primary my-2 my-sm-0" type="submit" href="./land.php">Back</a>
+              <a class="btn btn-outline-primary my-2 my-sm-0" type="submit" href="./land.php">Back</a>
   </nav>
     <div class="car">
     <div class="card" style="width: 35rem;">
@@ -38,12 +38,7 @@
                 <input style="color: floralwhite;" type="text" class="form-control-plaintext" id="trackname" placeholder="Trackname" name="trackname">
               </div>
             </div>
-            <div class="form-group row">
-                <label for="trackid" class="col-sm-6 col-form-label">Track id (TR0**) :</label>
-                <div class="col-sm-6">
-                  <input style="color: floralwhite;" type="text" class="form-control-plaintext" id="trackid" placeholder="Track Id" name="track_id">
-                </div>
-              </div>
+            
             <div class="form-group row">
                 <label for="tracktype" class="col-sm-6 col-form-label">Track Type :</label>
                 <div class="col-sm-6">
@@ -78,38 +73,29 @@
 
           <?php
           if (isset($_POST['add_details_btn'])) {
-            $k = 1;
-            $track_id = $_POST['track_id'];
+           
+           
             $track_name = $_POST['trackname'];
             $track_type = $_POST['tracktype'];
             $track_desc = $_POST['trackdesc'];
             $singer_name = $_POST['singer_name'];
             $music_type = $_POST['music_type'];
+
             if($track_id=="" || $track_name=="" || $track_type=="" || $track_desc=="" || $singer_name=="" || $music_type==""){
               echo '<script>alert("Enter all the fields..!!")</script>';
             }
             else{
-            $sql = "SELECT track_id FROM track";
-            $query_run = mysqli_query($conn,$sql);
-            $row_count = mysqli_num_rows($query_run);
-            while(@$row = mysqli_fetch_array($query_run)){
-              for ($i=0; $i < $row_count ; $i++) {
-                if (@$row[$i] == $_POST['track_id']) {
-                  $k = 0;
-                  }
-                }
-              }
-              if($k == 1){
-              $query = "insert into track values('$track_id','$track_name','$track_type','$track_desc')";
+           
+            
+        
+              $query = "INSERT INTO `track`(`track_name`, `track_type`, `track_desc`) VALUES ('$track_name','$track_type','$track_desc')";
+              
               $result = mysqli_query($conn,$query);
-              $query1 = "insert into singer values('$singer_name')";
+              $query1 = "INSERT INTO `singer`(`singer_name`) VALUES ('$singer_name')";
               $result1 = mysqli_query($conn,$query1);
-              $query2 = "insert into music_cat values('$music_type')";
+              $query2 = "INSERT INTO `music_cat`(`music_type`) values('$music_type')";
               $result2 = mysqli_query($conn,$query2);
-            }
-            else {
-              echo '<script>alert("Track Id already exists..!!")</script>';
-            }
+           
           }
           }
            ?>
