@@ -1,7 +1,6 @@
 <?php
-$conn = mysqli_connect('localhost','root','') OR die("Cannot Connect...Sry..!!");
-mysqli_select_db($conn,'music');
-?>
+  include('dbconfig/config.php');
+ ?>
 
 
 <html>
@@ -44,6 +43,10 @@ mysqli_select_db($conn,'music');
                     if (isset($_POST['sign_in_btn'])) {
                       $user_name = $_POST['user_name'];
                       $password = $_POST['psswd'];
+                      if($user_name=="" || $password==""){
+                        echo '<script>alert("Enter username and password..!!")</script>';
+                      }
+                      else{
                       $sql = "SELECT * FROM user where username = '$user_name' && password = '$password'";
                       $query = mysqli_query($conn,$sql);
                       $row = mysqli_fetch_array($query);
@@ -53,6 +56,7 @@ mysqli_select_db($conn,'music');
                         else {
                           echo '<script>alert("Oops..!! Invalid credentials..!!")</script>';
                         }
+                      }
                       }
                   ?>
 
@@ -89,10 +93,18 @@ mysqli_select_db($conn,'music');
                     $password = $_POST['password'];
                     $r_password = $_POST['r_password'];
                     $email = $_POST['email'];
-
+                    if($username=="" || $password=="" || $r_password=="" || $email==""){
+                      echo '<script>alert("Enter all the details..!!")</script>';
+                    }
+                    else{
+                      if(strcmp($password,$r_password)==0){
                     $query = "insert into user values('$username','$password','$r_password','$email')";
                     $result = mysqli_query($conn,$query);
-                    //header("Location: land.php");
+                  }
+                  else {
+                      echo '<script>alert("password not matching")</script>';
+                  }
+                   }
                   }
                  ?>
             </div>

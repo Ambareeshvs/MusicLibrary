@@ -1,10 +1,6 @@
 <?php
-$conn = mysqli_connect('localhost','root','') OR die("Cannot Connect...Sry..!!");
-mysqli_select_db($conn,'music');
-
-//$user_name = " ";
-//$password = " ";
-?>
+  include('dbconfig/config.php');
+ ?>
 
 <html>
 <head>
@@ -89,6 +85,10 @@ mysqli_select_db($conn,'music');
             $track_desc = $_POST['trackdesc'];
             $singer_name = $_POST['singer_name'];
             $music_type = $_POST['music_type'];
+            if($track_id=="" || $track_name=="" || $track_type=="" || $track_desc=="" || $singer_name=="" || $music_type==""){
+              echo '<script>alert("Enter all the fields..!!")</script>';
+            }
+            else{
             $sql = "SELECT track_id FROM track";
             $query_run = mysqli_query($conn,$sql);
             $row_count = mysqli_num_rows($query_run);
@@ -110,6 +110,7 @@ mysqli_select_db($conn,'music');
             else {
               echo '<script>alert("Track Id already exists..!!")</script>';
             }
+          }
           }
            ?>
 

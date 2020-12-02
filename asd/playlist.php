@@ -1,7 +1,6 @@
 <?php
-$conn = mysqli_connect('localhost','root','') OR die("Cannot Connect...Sry..!!");
-mysqli_select_db($conn,'music');
-?>
+  include('dbconfig/config.php');
+ ?>
 
 <html>
 <head>
@@ -63,10 +62,14 @@ mysqli_select_db($conn,'music');
                         <?php
                         if (isset($_POST['playlist_btn'])) {
                           $new_playlist = $_POST['playlist_name'];
-
+                          if ($new_playlist == "") {
+                            echo '<script>alert("Enter the playlist name..!!")</script>';
+                          }
+                          else{
                           $query = "insert into playlist ('playlist_name') values('$new_playlist')";
                           $result = mysqli_query($conn,$query);
                         }
+                      }
                          ?>
 
                         </div>

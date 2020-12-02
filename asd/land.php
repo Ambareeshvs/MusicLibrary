@@ -31,8 +31,29 @@ mysqli_select_db($conn,'music');
     </form>
   </nav>
 
-    
 
+  <?php
+  $h = 1;
+  if (isset($_POST['search_btn'])) {
+    $name_upper = $_POST['search_value'];
+    $sql1 = "SELECT track_name FROM track";
+    $query1 = mysqli_query($conn,$sql1);
+    while(@$record = mysqli_fetch_array($query1))
+    {
+      for ($i=0; $i < 3 ; $i++) {
+        if (strcasecmp(@$record[$i],$name_upper) == 0) {
+          $h = 0;
+         }
+      }
+    }
+    if ($h == 1) {
+      echo '<script>alert("Not Found")</script>';
+    }
+    else {
+      header('Location:search.php');
+    }
+    }
+   ?>
 
       <div class="jumbotron">
         <h1 class="display-4"><b>Music Library</b></h1>
