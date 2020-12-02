@@ -64,7 +64,8 @@ mysqli_select_db($conn,'music');
                         if (isset($_POST['playlist_btn'])) {
                           $new_playlist = $_POST['playlist_name'];
 
-                          $query = "insert into playlist ('playlist_name') values('$new_playlist')";
+                          $query = "INSERT INTO `playlist`(`playlist_name`) VALUES ('$new_playlist')";
+                          
                           $result = mysqli_query($conn,$query);
                         }
                          ?>
