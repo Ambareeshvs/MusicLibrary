@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 30, 2020 at 05:05 AM
--- Server version: 10.4.13-MariaDB
--- PHP Version: 7.3.20
+-- Generation Time: Dec 02, 2020 at 12:58 PM
+-- Server version: 10.4.16-MariaDB
+-- PHP Version: 7.4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,16 +28,19 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `music_cat` (
-  `music_type` varchar(40) NOT NULL
+  `music_id` int(10) NOT NULL,
+  `music_type` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `music_cat`
 --
 
-INSERT INTO `music_cat` (`music_type`) VALUES
-('khku'),
-('ijgsio');
+INSERT INTO `music_cat` (`music_id`, `music_type`) VALUES
+(1, 'melody'),
+(2, ''),
+(3, 'melody'),
+(4, 'melody');
 
 -- --------------------------------------------------------
 
@@ -46,15 +49,17 @@ INSERT INTO `music_cat` (`music_type`) VALUES
 --
 
 CREATE TABLE `playlist` (
-  `playlist_name` varchar(40) NOT NULL
+  `playlist_id` int(10) NOT NULL,
+  `playlist_name` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `playlist`
 --
 
-INSERT INTO `playlist` (`playlist_name`) VALUES
-('Bollywood');
+INSERT INTO `playlist` (`playlist_id`, `playlist_name`) VALUES
+(1, 'Mine'),
+(2, 'Malayalam');
 
 -- --------------------------------------------------------
 
@@ -63,16 +68,19 @@ INSERT INTO `playlist` (`playlist_name`) VALUES
 --
 
 CREATE TABLE `singer` (
-  `singer_name` varchar(20) NOT NULL
+  `singer_id` int(10) NOT NULL,
+  `singer_name` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `singer`
 --
 
-INSERT INTO `singer` (`singer_name`) VALUES
-('gugik'),
-('ijdf');
+INSERT INTO `singer` (`singer_id`, `singer_name`) VALUES
+(1, 'Sooraj'),
+(2, ''),
+(3, 'arjith'),
+(4, 'Vineeth');
 
 -- --------------------------------------------------------
 
@@ -81,7 +89,7 @@ INSERT INTO `singer` (`singer_name`) VALUES
 --
 
 CREATE TABLE `track` (
-  `track_id` varchar(10) NOT NULL,
+  `track_id` int(10) NOT NULL,
   `track_name` varchar(40) NOT NULL,
   `track_type` varchar(40) NOT NULL,
   `track_desc` varchar(40) NOT NULL
@@ -92,8 +100,9 @@ CREATE TABLE `track` (
 --
 
 INSERT INTO `track` (`track_id`, `track_name`, `track_type`, `track_desc`) VALUES
-('TRO01', 'Thaniye', 'agd', 'Guppy'),
-('001a', 'yass', 'agd', 'iuyfasiu');
+(1, 'Thaniye', 'classical', 'Guppy'),
+(3, 'Kabira', 'classical', 'Ye jawani he divani'),
+(4, 'Anuragam', 'classical', 'Thattam');
 
 -- --------------------------------------------------------
 
@@ -115,6 +124,62 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`username`, `password`, `r_password`, `email`) VALUES
 ('Admin', 'admin', 'admin', 'admin@admin.com'),
 ('Ani', 'ani', 'ani', 'ani@xyz');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `music_cat`
+--
+ALTER TABLE `music_cat`
+  ADD PRIMARY KEY (`music_id`);
+
+--
+-- Indexes for table `playlist`
+--
+ALTER TABLE `playlist`
+  ADD PRIMARY KEY (`playlist_id`);
+
+--
+-- Indexes for table `singer`
+--
+ALTER TABLE `singer`
+  ADD PRIMARY KEY (`singer_id`);
+
+--
+-- Indexes for table `track`
+--
+ALTER TABLE `track`
+  ADD PRIMARY KEY (`track_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `music_cat`
+--
+ALTER TABLE `music_cat`
+  MODIFY `music_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `playlist`
+--
+ALTER TABLE `playlist`
+  MODIFY `playlist_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `singer`
+--
+ALTER TABLE `singer`
+  MODIFY `singer_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `track`
+--
+ALTER TABLE `track`
+  MODIFY `track_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
