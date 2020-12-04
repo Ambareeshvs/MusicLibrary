@@ -100,7 +100,7 @@
               @$num_row_m = mysqli_num_rows($res_m);
 
               }
-              if (($num_row_m > 0)  && ($num_rows_s > 0)) {
+              if ((@$num_row_m > 0)  && (@$num_rows_s > 0)) {
                 $t_s = "SELECT `singer_id` FROM `singer` WHERE `singer_name` = '$singer_name'";
                 $t_m = "SELECT `music_id` FROM `music_cat` WHERE `music_type` = '$music_type'";
                 $res_ss = mysqli_query($conn,$t_s);

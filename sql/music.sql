@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 03, 2020 at 05:05 PM
--- Server version: 10.4.16-MariaDB
--- PHP Version: 7.4.12
+-- Generation Time: Dec 04, 2020 at 09:00 AM
+-- Server version: 10.4.13-MariaDB
+-- PHP Version: 7.3.20
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -37,9 +37,13 @@ CREATE TABLE `music_cat` (
 --
 
 INSERT INTO `music_cat` (`music_id`, `music_type`) VALUES
-(1, 'melody'),
-(2, 'JHBAJNABH'),
-(3, 'FFGFD');
+(7, 'hu'),
+(2, 'igtyh'),
+(5, 'kjb'),
+(1, 'Melody'),
+(6, 'ujj'),
+(4, 'uk'),
+(8, 'yhu');
 
 -- --------------------------------------------------------
 
@@ -58,7 +62,11 @@ CREATE TABLE `playlist` (
 
 INSERT INTO `playlist` (`playlist_id`, `playlist_name`) VALUES
 (1, 'Mine'),
-(2, 'Malayalam');
+(2, 'Malayalam'),
+(3, 'Hollywood'),
+(4, 'Hollywood'),
+(5, 'Hollywood'),
+(6, 'Hollywood');
 
 -- --------------------------------------------------------
 
@@ -77,8 +85,11 @@ CREATE TABLE `singer` (
 
 INSERT INTO `singer` (`singer_id`, `singer_name`) VALUES
 (1, 'Anirudh'),
-(2, 'arjith'),
-(3, 'arjith');
+(6, 'hyb'),
+(5, 'kj'),
+(8, 'nuiohn'),
+(7, 'uhjn'),
+(4, 'uih');
 
 -- --------------------------------------------------------
 
@@ -100,7 +111,8 @@ CREATE TABLE `track` (
 --
 
 INSERT INTO `track` (`track_id`, `track_name`, `track_type`, `track_desc`, `track_singer_id`, `track_music_id`) VALUES
-(6, 'anuragam', 'classical', 'ye', 1, 1);
+(5, 'iuhyiu', 'ujhg', 'ghbhk', 5, 5),
+(8, 'ouhnso', 'uguihiu', 'oih', 8, 8);
 
 -- --------------------------------------------------------
 
@@ -131,7 +143,8 @@ INSERT INTO `user` (`username`, `password`, `r_password`, `email`) VALUES
 -- Indexes for table `music_cat`
 --
 ALTER TABLE `music_cat`
-  ADD PRIMARY KEY (`music_id`);
+  ADD PRIMARY KEY (`music_id`),
+  ADD UNIQUE KEY `music_type` (`music_type`);
 
 --
 -- Indexes for table `playlist`
@@ -143,7 +156,8 @@ ALTER TABLE `playlist`
 -- Indexes for table `singer`
 --
 ALTER TABLE `singer`
-  ADD PRIMARY KEY (`singer_id`);
+  ADD PRIMARY KEY (`singer_id`),
+  ADD UNIQUE KEY `singer_name` (`singer_name`);
 
 --
 -- Indexes for table `track`
@@ -161,19 +175,19 @@ ALTER TABLE `track`
 -- AUTO_INCREMENT for table `music_cat`
 --
 ALTER TABLE `music_cat`
-  MODIFY `music_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `music_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `playlist`
 --
 ALTER TABLE `playlist`
-  MODIFY `playlist_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `playlist_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `singer`
 --
 ALTER TABLE `singer`
-  MODIFY `singer_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `singer_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `track`
