@@ -1,3 +1,6 @@
+<?php session_start();
+ ?>
+
 <html>
 <head>
     <link
@@ -15,17 +18,13 @@
     <div class="card " style="width: 20rem; height: 25rem;">
         <img class="card-img-top" src="image/download.jpg" alt="Card image cap">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
+          <h5 class="card-title"><?php echo $_SESSION['name']; ?></h5>
+
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
           <a href="#" class="btn btn-primary">Play</a>
         </div>
       </div>
       </div>
-
-
-
-
-
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS. -->
  <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
@@ -34,5 +33,3 @@
 </body>
 
 </html>
-
-
