@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 02, 2020 at 12:58 PM
+-- Generation Time: Dec 03, 2020 at 05:05 PM
 -- Server version: 10.4.16-MariaDB
 -- PHP Version: 7.4.12
 
@@ -38,9 +38,8 @@ CREATE TABLE `music_cat` (
 
 INSERT INTO `music_cat` (`music_id`, `music_type`) VALUES
 (1, 'melody'),
-(2, ''),
-(3, 'melody'),
-(4, 'melody');
+(2, 'JHBAJNABH'),
+(3, 'FFGFD');
 
 -- --------------------------------------------------------
 
@@ -77,10 +76,9 @@ CREATE TABLE `singer` (
 --
 
 INSERT INTO `singer` (`singer_id`, `singer_name`) VALUES
-(1, 'Sooraj'),
-(2, ''),
-(3, 'arjith'),
-(4, 'Vineeth');
+(1, 'Anirudh'),
+(2, 'arjith'),
+(3, 'arjith');
 
 -- --------------------------------------------------------
 
@@ -92,17 +90,17 @@ CREATE TABLE `track` (
   `track_id` int(10) NOT NULL,
   `track_name` varchar(40) NOT NULL,
   `track_type` varchar(40) NOT NULL,
-  `track_desc` varchar(40) NOT NULL
+  `track_desc` varchar(40) NOT NULL,
+  `track_singer_id` int(10) NOT NULL,
+  `track_music_id` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `track`
 --
 
-INSERT INTO `track` (`track_id`, `track_name`, `track_type`, `track_desc`) VALUES
-(1, 'Thaniye', 'classical', 'Guppy'),
-(3, 'Kabira', 'classical', 'Ye jawani he divani'),
-(4, 'Anuragam', 'classical', 'Thattam');
+INSERT INTO `track` (`track_id`, `track_name`, `track_type`, `track_desc`, `track_singer_id`, `track_music_id`) VALUES
+(6, 'anuragam', 'classical', 'ye', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -151,7 +149,9 @@ ALTER TABLE `singer`
 -- Indexes for table `track`
 --
 ALTER TABLE `track`
-  ADD PRIMARY KEY (`track_id`);
+  ADD PRIMARY KEY (`track_id`),
+  ADD KEY `track_singer_id` (`track_singer_id`),
+  ADD KEY `track_music_id` (`track_music_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -161,7 +161,7 @@ ALTER TABLE `track`
 -- AUTO_INCREMENT for table `music_cat`
 --
 ALTER TABLE `music_cat`
-  MODIFY `music_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `music_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `playlist`
@@ -173,13 +173,24 @@ ALTER TABLE `playlist`
 -- AUTO_INCREMENT for table `singer`
 --
 ALTER TABLE `singer`
-  MODIFY `singer_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `singer_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `track`
 --
 ALTER TABLE `track`
-  MODIFY `track_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `track_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `track`
+--
+ALTER TABLE `track`
+  ADD CONSTRAINT `track_ibfk_1` FOREIGN KEY (`track_singer_id`) REFERENCES `singer` (`singer_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `track_ibfk_2` FOREIGN KEY (`track_music_id`) REFERENCES `music_cat` (`music_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

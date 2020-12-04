@@ -26,7 +26,7 @@
     <nav class="navbar navbar-dark bg-dark">
 
             <a class="btn btn-outline-primary my-2 my-sm-0" type="submit" href="./land.php"> Back</a>
-            <button href="#" class="btn btn-outline-danger my-2 my-sm-0 mb-9 " id="button" data-toggle="modal" data-target="#songModal">Delete</button>
+            <button href="#" class="btn btn-outline-danger my-2 my-sm-0 mb-9 " id="button" data-toggle="modal" data-target="#songModal" name="red_dlt">Delete</button>
       </nav>
 
 
@@ -40,20 +40,22 @@
         </button>
       </div>
       <div class="modal-body">
-      <form>
+
   <div class="form-group row">
     <label for="sname" class="col-sm-4 col-form-label">Song Name:</label>
     <div class="col-sm">
-      <input type="text" class="form-control-plaintext" id="sname" placeholder="Enter a song name">
+      <input type="text" class="form-control-plaintext" id="sname" placeholder="Enter a song name" name="dlt_song_btn">
     </div>
   </div>
-
-</form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-dark">Delete</button>
+        <button type="button" class="btn btn-dark" name="dlt_btn">Delete</button>
       </div>
+
+
+
+
     </div>
   </div>
 </div>
@@ -84,7 +86,7 @@ echo $record['track_name']; ?>
 <form class="" action="" method="post">
   <div class="text-right">
 <button href="#" class="btn btn-outline-primary my-2 my-sm-0 mb-9 " id="button">Play</button>
-<button href="" class="btn btn-outline-info my-2 my-sm-0 mb-9 " id="button" name="dlt_btn">Delete</button>
+<button href="" class="btn btn-outline-info my-2 my-sm-0 mb-9 " id="button">Delete</button>
 </form>
 
 
