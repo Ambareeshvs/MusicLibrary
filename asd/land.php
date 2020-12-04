@@ -32,7 +32,7 @@ mysqli_select_db($conn,'music');
   </nav>
 
 
-  <?php
+  <?php session_start();
   $h = 1;
   if (isset($_POST['search_btn'])) {
     $name_upper = $_POST['search_value'];
@@ -44,6 +44,7 @@ mysqli_select_db($conn,'music');
       for ($i=0; $i < 50 ; $i++) {
         if (strcasecmp(@$record[$i],$name_upper) == 0) {
           $h = 0;
+          $_SESSION['name'] = @$record[$i];
          }
       }
     }
