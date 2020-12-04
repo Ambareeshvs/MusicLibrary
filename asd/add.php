@@ -38,7 +38,7 @@
                 <input style="color: floralwhite;" type="text" class="form-control-plaintext" id="trackname" placeholder="Trackname" name="trackname">
               </div>
             </div>
-            
+
             <div class="form-group row">
                 <label for="tracktype" class="col-sm-6 col-form-label">Track Type :</label>
                 <div class="col-sm-6">
@@ -73,30 +73,45 @@
 
           <?php
           if (isset($_POST['add_details_btn'])) {
-           
-           
+
+
             $track_name = $_POST['trackname'];
             $track_type = $_POST['tracktype'];
             $track_desc = $_POST['trackdesc'];
             $singer_name = $_POST['singer_name'];
             $music_type = $_POST['music_type'];
 
-            if($track_id=="" || $track_name=="" || $track_type=="" || $track_desc=="" || $singer_name=="" || $music_type==""){
+            if($track_name=="" || $track_type=="" || $track_desc=="" || $singer_name=="" || $music_type==""){
               echo '<script>alert("Enter all the fields..!!")</script>';
             }
             else{
-           
-            
-        
-              $query = "INSERT INTO `track`(`track_name`, `track_type`, `track_desc`) VALUES ('$track_name','$track_type','$track_desc')";
-              
-              $result = mysqli_query($conn,$query);
+
               $query1 = "INSERT INTO `singer`(`singer_name`) VALUES ('$singer_name')";
               $result1 = mysqli_query($conn,$query1);
               $query2 = "INSERT INTO `music_cat`(`music_type`) values('$music_type')";
               $result2 = mysqli_query($conn,$query2);
-           
-          }
+
+              $qry = "SELECT * FROM `singer` WHERE `singer_name` = '$singer_name'";
+              $res_s = mysqli_query($conn,$qry);
+              @$num_rows_s = mysqli_num_rows($res_s);
+
+              $qry_m = "SELECT * FROM `music_cat` WHERE `music_type` = '$music_type'";
+              $res_m = mysqli_query($conn,$qry_m);
+              @$num_row_m = mysqli_num_rows($res_m);
+
+              }
+              if ((@$num_row_m > 0)  && (@$num_rows_s > 0)) {
+                $t_s = "SELECT `singer_id` FROM `singer` WHERE `singer_name` = '$singer_name'";
+                $t_m = "SELECT `music_id` FROM `music_cat` WHERE `music_type` = '$music_type'";
+                $res_ss = mysqli_query($conn,$t_s);
+                $res_mm = mysqli_query($conn,$t_m);
+                @$record1 = mysqli_fetch_array(@$res_ss);
+                $req1 = @$record1['singer_id'];
+                @$record2 = mysqli_fetch_array(@$res_mm);
+                $req2 = @$record2['music_id'];
+                $query_t = "INSERT INTO `track`(`track_name`, `track_type`, `track_desc`,`track_singer_id`,`track_music_id`) VALUES ('$track_name','$track_type','$track_desc',$req1,$req2)";
+                $result = mysqli_query($conn,$query_t);
+              }
           }
            ?>
 

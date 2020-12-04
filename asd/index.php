@@ -98,7 +98,7 @@
                     }
                     else{
                       if(strcmp($password,$r_password)==0){
-                    $query = "insert into user values('$username','$password','$r_password','$email')";
+                    $query = "insert into `user`(`username`,`password`,`r_password`,`email`) values('$username','$password','$r_password','$email')";
                     $result = mysqli_query($conn,$query);
                   }
                   else {

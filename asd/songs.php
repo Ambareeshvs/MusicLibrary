@@ -26,37 +26,33 @@
     <nav class="navbar navbar-dark bg-dark">
 
             <a class="btn btn-outline-primary my-2 my-sm-0" type="submit" href="./land.php"> Back</a>
-            <button href="#" class="btn btn-outline-danger my-2 my-sm-0 mb-9 " id="button" data-toggle="modal" data-target="#songModal">Delete</button>
+            <form class="form-inline my-2 my-lg-0" method="post">
+      <input class="form-control mr-sm-2" type="text" name="dlt_song_name" placeholder="Enter song name" aria-label="Search">
+      <button class="btn btn-outline-danger  my-2 my-sm-0" type="submit" name="dlt_btn">Delete</button>
+    </form>
+
+    <?php
+    if (isset($_POST['dlt_btn']))
+    {
+      $dlt_name = $_POST['dlt_song_name'];
+      if($_POST['dlt_song_name'] == ""){
+        echo '<script>alert("Enter the song name...!!")</script>';
+      }
+      else {
+        $sql1 = "SELECT * FROM `track` WHERE `track_name` = '$dlt_name'";
+        $query1 = mysqli_query($conn,$sql1);
+        @$row = mysqli_fetch_array($query1);
+        $id = @$row['track_id'];
+        $sql3 = "DELETE FROM `track` WHERE `track_id` = $id";
+        $query2 = mysqli_query($conn,$sql3);
+      }
+    }
+     ?>
+
       </nav>
 
 
-<div class="modal fade modal-white" id="songModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Delete a song</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      <form>
-  <div class="form-group row">
-    <label for="sname" class="col-sm-4 col-form-label">Song Name:</label>
-    <div class="col-sm">
-      <input type="text" class="form-control-plaintext" id="sname" placeholder="Enter a song name">
-    </div>
-  </div>
 
-</form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-dark">Delete</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 
     <?php

@@ -38,9 +38,10 @@ mysqli_select_db($conn,'music');
     $name_upper = $_POST['search_value'];
     $sql1 = "SELECT track_name FROM track";
     $query1 = mysqli_query($conn,$sql1);
+    //row_count = mysqli_num_rows($query1);
     while(@$record = mysqli_fetch_array($query1))
     {
-      for ($i=0; $i < 3 ; $i++) {
+      for ($i=0; $i < 50 ; $i++) {
         if (strcasecmp(@$record[$i],$name_upper) == 0) {
           $h = 0;
          }
